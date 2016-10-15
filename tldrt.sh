@@ -13,8 +13,6 @@ or when FILE is -, read standard input.
 EOF
 }
 
-CURRDIR=$(pwd)
-BASEDIR=$(dirname "$0")
 VERBOSE=0
 LOGO="res/stamp_6x13.png"
 
@@ -26,7 +24,7 @@ while getopts "hvi:" opt; do
             ;;
         v)  VERBOSE=$((VERBOSE+1))
             ;;
-        i)  INPUT=$OPTARG
+        i)  IFP=$OPTARG
             ;;
         '?')
             show_help >&2
@@ -38,20 +36,47 @@ shift "$((OPTIND-1))" # Shift off the options and optional --.
 
 MAGICK_OCL_DEVICE=OFF
 
-BASENAME=$(basename -- "$INPUT")
-DIRNAME=$(dirname -- "$INPUT")
-FILENAME="${BASENAME%.*}"
-EXTENSION="${BASENAME##*.}"
-HASH=$(echo -n "$FILENAME" | md5sum | awk '{print substr($1,0,6)}')
+#### PATH RESOLUTIONS
+## Canonical Path to Working Directory
+WDC=$(pwd)
+## Path to Executable Directory
+XDP=$(dirname -- "$0")
+## Canonical Path to Executable Directory
+XDC=`cd "$XDP"; pwd`
+## Path to Input Directory
+IDP=$(dirname -- "$IFP")
+## Canonical Path to Input Directory
+IDC=`cd "$IDP"; pwd` # (Caution: if !IDP then IDC=WDC)
+## Input File Basename
+IFB=$(basename -- "$IFP")
+## Canonical Path to Input File
+IFC="${IDC}/${IFB}"
+## Input File Name
+IFN="${IFB%.*}"
+## Input File Extension
+IFE="${IFB##*.}"
+## Input File Hash String
+IFH=$(echo -n "$IFN" \
+          | md5sum \
+          | awk '{print substr($1,0,6)}')
+## Report Path Resolutions
+if [[ $VERBOSE  == 1 ]]; then
+    echo "Canonical Path to Working Directory    : $WDC"
+    echo "Path to Executable Directory           : $XDP"
+    echo "Canonical Path to Executable Directory : $XDC"
+    echo "Path to Input File                     : $IFP"
+    echo "Path to Input Directory                : $IDP"
+    echo "Canonical Path to Input Directory      : $IDC"
+    echo "Input File Basename                    : $IFB"
+    echo "Canonical Path to Input File           : $IFC"
+    echo "Input File Name                        : $IFN"
+    echo "Input File Extension                   : $IFE"
+    echo "Input File Hash String                 : $IFH"
+fi
+#### PATH RESOLUTIONS
 
-echo "Input     : $INPUT"
-echo "Basename  : $BASENAME"
-echo "Dirname   : $DIRNAME"
-echo "Filename  : $FILENAME"
-echo "Extension : $EXTENSION"
-echo "Hash      : $HASH"
-
-mkdir -p $HASH
+echo "Creating directory at $IFH"
+# mkdir -p $IFH
 
 # convert -antialias -size 512x320 stamp_bg.png \
 #         -stroke none -fill "#$HASH" \
