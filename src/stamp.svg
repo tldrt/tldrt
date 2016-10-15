@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256"
+   height="160"
+   viewBox="0 0 256 160"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="stamp.svg"
+   inkscape:export-filename="/home/kenanb/stamp.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="50.86"
+     inkscape:cy="17.248902"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-page="true"
+     inkscape:window-width="1914"
+     inkscape:window-height="1061"
+     inkscape:window-x="0"
+     inkscape:window-y="16"
+     inkscape:window-maximized="0"
+     inkscape:snap-grids="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4283"
+       spacingx="7.9999998"
+       spacingy="8"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-892.36219)">
+    <g
+       id="g4444"
+       transform="translate(-350.88162,66.46905)"
+       style="opacity:1">
+      <path
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 79.955078 14.326172 C 76.935298 18.714272 72.39146 21.2779 66.25 22.125 L 66.25 32 L 75.75 32 L 75.75 84.875 C 75.75 92.5 76.25 95.5 77.75 98.5 C 80.5 103.5 85.375 105.875 92.75 105.875 L 142.5 105.875 L 142.5 96 L 100.5 96 C 97.125 96 96 94 96 87.5 L 96 32 L 105.5 32 L 105.5 22.125 C 99.35854 21.2779 94.812749 18.714272 91.792969 14.326172 L 79.955078 14.326172 z "
+         transform="translate(350.88162,825.89314)"
+         id="path4889-4" />
+      <path
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 113.5 22.125 L 113.5 32 L 155.5 32 C 158.875 32 160 34 160 40.5 L 160 96 L 150.5 96 L 150.5 105.875 C 156.64146 106.7221 161.18725 109.28573 164.20703 113.67383 L 176.04492 113.67383 C 179.0647 109.28573 183.60855 106.7221 189.75 105.875 L 189.75 96 L 180.25 96 L 180.25 43.125 C 180.25 35.5 179.75 32.5 178.25 29.5 C 175.5 24.5 170.625 22.125 163.25 22.125 L 113.5 22.125 z "
+         transform="translate(350.88162,825.89314)"
+         id="path5086-6" />
+    </g>
+  </g>
+</svg>

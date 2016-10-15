@@ -1,0 +1,41 @@
+\documentclass[$for(lang)$$lang$$sep$,$endfor$]{tldrt}
+$for(header-includes)$
+$header-includes$
+$endfor$
+$if(date)$
+\date{$date$}
+$endif$
+$if(title)$
+\title{$title$}
+$endif$
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+$if(attribution)$
+\attribution{$attribution$}
+$endif$
+$if(epigraph)$
+\epigram$if(epigraph-source)$[$epigraph-source$]$endif${$epigraph-author$}{$epigraph$}
+$endif$
+
+\begin{document}
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+$body$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
+
+% Local Variables:
+% mode: latex
+% coding : utf-8
+% TeX-engine: xetex
+% TeX-command-extra-options: "--shell-escape --enable-write18"
+% End:
