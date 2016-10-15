@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Usage info
 show_help() {
@@ -13,6 +13,8 @@ or when FILE is -, read standard input.
 EOF
 }
 
+CURRDIR=$(pwd)
+BASEDIR=$(dirname "$0")
 VERBOSE=0
 LOGO="res/stamp_6x13.png"
 
@@ -36,39 +38,48 @@ shift "$((OPTIND-1))" # Shift off the options and optional --.
 
 MAGICK_OCL_DEVICE=OFF
 
-BASENAME=$(basename "$INPUT")
-FILENAME="${BASENAME##*/}"
-HASH=$(md5sum <<< "$FILENAME" | awk '{print substr($1,0,6)}')
+BASENAME=$(basename -- "$INPUT")
+DIRNAME=$(dirname -- "$INPUT")
+FILENAME="${BASENAME%.*}"
+EXTENSION="${BASENAME##*.}"
+HASH=$(echo -n "$FILENAME" | md5sum | awk '{print substr($1,0,6)}')
+
+echo "Input     : $INPUT"
+echo "Basename  : $BASENAME"
+echo "Dirname   : $DIRNAME"
+echo "Filename  : $FILENAME"
+echo "Extension : $EXTENSION"
+echo "Hash      : $HASH"
 
 mkdir -p $HASH
 
-convert -antialias -size 512x320 stamp_bg.png \
-        -stroke none -fill "#$HASH" \
-        -draw "rectangle 208,80 304,176" \
-        -font Shortcut -fill '#503050' \
-        -pointsize 50 -gravity south \
-        -draw "text 0,0 '#$HASH'" \
-        "$HASH/images/stamp.png"
+# convert -antialias -size 512x320 stamp_bg.png \
+#         -stroke none -fill "#$HASH" \
+#         -draw "rectangle 208,80 304,176" \
+#         -font Shortcut -fill '#503050' \
+#         -pointsize 50 -gravity south \
+#         -draw "text 0,0 '#$HASH'" \
+#         "$HASH/images/stamp.png"
 
-pandoc -f markdown -t latex \
-       --latex-engine=xelatex \
-       --latex-engine-opt="--shell-escape" \
-       --latex-engine-opt="--enable-write18" \
-       --template tldrt.latex \
-       --variable hash="$HASH"
-       -o "$HASH/${FILENAME}.pdf" "${BASENAME}"
+# pandoc -f markdown -t latex \
+#        --latex-engine=xelatex \
+#        --latex-engine-opt="--shell-escape" \
+#        --latex-engine-opt="--enable-write18" \
+#        --template tldrt.latex \
+#        --variable hash="$HASH"
+#        -o "$HASH/${FILENAME}.pdf" "${BASENAME}"
 
-pandoc -f markdown -t html \
-       --template tldrt.html \
-       --variable hash="$HASH"
-       -o "$HASH/${FILENAME}.html" "${BASENAME}"
+# pandoc -f markdown -t html \
+#        --template tldrt.html \
+#        --variable hash="$HASH"
+#        -o "$HASH/${FILENAME}.html" "${BASENAME}"
 
-convert -antialias -density 240 "$HASH/${FILENAME}.pdf[0]" \
-        -quality 90 -gravity north \
-        -crop 1200x642+0+160 +repage \
-        -resize 50% -flatten \
-        images/vignette.png \
-        -compose ColorBurn -composite \
-        "$HASH/thumbnail.png"
+# convert -antialias -density 240 "$HASH/${FILENAME}.pdf[0]" \
+#         -quality 90 -gravity north \
+#         -crop 1200x642+0+160 +repage \
+#         -resize 50% -flatten \
+#         images/vignette.png \
+#         -compose ColorBurn -composite \
+#         "$HASH/thumbnail.png"
 
 # End of file
