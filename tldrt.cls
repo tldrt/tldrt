@@ -44,7 +44,7 @@
 %% Graphics
 \RequirePackage{graphicx}
 \RequirePackage{eso-pic}
-\graphicspath{{images/}}
+\graphicspath{{./images/}}
 \RequirePackage{tikz}
 \RequirePackage{atbegshi}
 \RequirePackage{ocgx2}

@@ -14,12 +14,11 @@ Generate TLDRT publish directory using FILE.
 EOF
 }
 
-MAGICK_OCL_DEVICE=OFF
 
+
+#### ARGUMENT PARSING
 VERBOSE=0
 PARENT=0
-LOGO="res/stamp_6x13.png"
-
 OPTIND=1 # Reset is necessary if getopts was used previously in the script.  It is a good idea to make this local in a function.
 while getopts "hvpd:" opt; do
     case "$opt" in
@@ -41,13 +40,13 @@ done
 shift "$((OPTIND-1))" # Shift off the options and optional --.
 
 #### PATH RESOLUTIONS
-## Canonical Path to Working Directory
+## Canonical path to working directory
 WDC=$(pwd)
-## Path to Executable Directory
+## Path to executable directory
 XDP=$(dirname -- "$0")
-## Canonical Path to Executable Directory
+## Canonical path to executable directory
 XDC=`cd "$XDP"; pwd`
-## Path to Input File
+## Path to input file
 if [ -z ${1+x} ]; then
     echo "No input file provided."
     exit 1
@@ -58,27 +57,27 @@ then
     exit 1
 fi
 IFP="$1"
-## Path to Input Directory
+## Path to input directory
 IDP=$(dirname -- "$IFP")
-## Canonical Path to Input Directory
+## Canonical path to input directory
 IDC=`cd "$IDP"; pwd`
-## Input File Basename
+## Input file basename
 IFB=$(basename -- "$IFP")
-## Canonical Path to Input File
+## Canonical path to input file
 IFC="${IDC}/${IFB}"
-## Input File Name
+## Input file name
 IFN="${IFB%.*}"
-## Input File Extension
+## Input file extension
 IFE="${IFB##*.}"
-## Input File Hash String
+## Input file hash string
 IFH=$(echo -n "$IFN" \
           | md5sum \
           | awk '{print substr($1,0,6)}')
-## Path to Ouput Directory
+## Path to ouput directory
 if [ -z ${ODP+x} ]; then
     ODP="$IDP"
 fi
-## Ensure & Check Path to Ouput Directory
+## Ensure & check path to ouput directory
 if [ $PARENT == 1 ]; then
     mkdir -p $ODP
 fi
@@ -88,29 +87,28 @@ then
     echo "Call with '-p' switch if you want to create directory."
     exit 1
 fi
-## Canonical Path to Ouput Directory
+## Canonical path to ouput directory
 ODC=`cd "$ODP"; pwd`
-## Canonical Path to Hash Directory
+## Canonical path to hash directory
 HDC="${ODC}/${IFH}"
 
-## Report Path Resolutions
+## Report path resolutions
 if [ $VERBOSE  == 1 ]; then
-    echo "Canonical Path to Working Directory    : $WDC"
-    echo "Path to Executable Directory           : $XDP"
-    echo "Canonical Path to Executable Directory : $XDC"
-    echo "Path to Input File                     : $IFP"
-    echo "Path to Input Directory                : $IDP"
-    echo "Canonical Path to Input Directory      : $IDC"
-    echo "Input File Basename                    : $IFB"
-    echo "Canonical Path to Input File           : $IFC"
-    echo "Input File Name                        : $IFN"
-    echo "Input File Extension                   : $IFE"
-    echo "Input File Hash String                 : $IFH"
-    echo "Path to Output Directory               : $IDP"
-    echo "Canonical Path to Output Directory     : $IDC"
-    echo "Canonical Path to Hash Directory       : $HDC"
+    echo "Canonical path to working directory    : $WDC"
+    echo "Path to executable directory           : $XDP"
+    echo "Canonical path to executable directory : $XDC"
+    echo "Path to input file                     : $IFP"
+    echo "Path to input directory                : $IDP"
+    echo "Canonical path to input directory      : $IDC"
+    echo "Input file basename                    : $IFB"
+    echo "Canonical path to input file           : $IFC"
+    echo "Input file name                        : $IFN"
+    echo "Input file extension                   : $IFE"
+    echo "Input file hash string                 : $IFH"
+    echo "Path to output directory               : $IDP"
+    echo "Canonical path to output directory     : $IDC"
+    echo "Canonical path to hash directory       : $HDC"
 fi
-#### PATH RESOLUTIONS
 
 echo "Creating $HDC directory."
 mkdir -p $HDC
@@ -118,6 +116,7 @@ mkdir -p $HDC
 COLOR=$(echo "${IFH}" | tr 'a-z' 'A-Z')
 echo "Creating STAMP at $HDC/images."
 mkdir -p "$HDC/images"
+MAGICK_OCL_DEVICE=OFF \
 convert -antialias -size 512x320 "$XDC/stamp_bg.png" \
         -stroke none -fill "#${COLOR}" \
         -draw "rectangle 208,80 304,176" \
@@ -128,10 +127,16 @@ convert -antialias -size 512x320 "$XDC/stamp_bg.png" \
         "$HDC/images/${COLOR}.png"
 
 echo "Copying media to $HDC."
+cp "$XDC/images/ornament.png" "$HDC/images"
 ## TODO!
 
+if [ $VERBOSE  == 1 ]; then
+    echo -n "LaTeX search paths                     : "
+    TEXINPUTS="${HDC}:${XDC}//:" kpsewhich -expand-var '$TEXINPUTS'
+fi
+
 echo "Creating DOCUMENT at $HDC."
-TEXINPUTS=".:${HDC}:${XDC}//:" \
+TEXINPUTS="${HDC}//:${XDC}//:" \
          pandoc -f markdown -t latex \
          --latex-engine=xelatex \
          --template "$XDC/tldrt.latex" \
@@ -146,6 +151,7 @@ echo "Removing redundant directory $HDC/images."
 rm -fr "$HDC/images"
 
 echo "Creating THUMBNAIL at $HDC."
+MAGICK_OCL_DEVICE=OFF \
 convert -antialias -density 240 "$HDC/${IFN}.pdf[0]" \
         -quality 90 -gravity north \
         -crop 1200x642+0+160 +repage \
