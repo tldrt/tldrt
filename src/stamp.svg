@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="131.6914"
-     inkscape:cy="42.227981"
+     inkscape:zoom="5.6"
+     inkscape:cx="123.92912"
+     inkscape:cy="92.890755"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -71,7 +71,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -84,11 +84,11 @@
        inkscape:connector-curvature="0"
        id="path4889-4"
        d="m 79.955078,906.68836 c -3.01978,4.3881 -7.563618,6.95173 -13.705078,7.79883 l 0,9.875 9.5,0 0,52.875 c 0,7.625 0.5,10.625 2,13.625 2.75,5 7.625,7.375 15,7.375 l 49.75,0 0,-9.875 -42,0 c -3.375,0 -4.5,-2 -4.5,-8.5 l 0,-55.5 9.5,0 0,-9.875 c -6.14146,-0.8471 -10.687251,-3.41073 -13.707031,-7.79883 l -11.837891,0 z"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#503050;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#0d65cf;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        inkscape:connector-curvature="0"
        id="path5086-6"
        d="m 113.5,914.48719 0,9.875 42,0 c 3.375,0 4.5,2 4.5,8.5 l 0,55.5 -9.5,0 0,9.875 c 6.14146,0.8471 10.68725,3.41071 13.70703,7.79881 l 11.83789,0 c 3.01978,-4.3881 7.56363,-6.95171 13.70508,-7.79881 l 0,-9.875 -9.5,0 0,-52.875 c 0,-7.625 -0.5,-10.625 -2,-13.625 -2.75,-5 -7.625,-7.375 -15,-7.375 l -49.75,0 z"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#503050;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#0d65cf;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
