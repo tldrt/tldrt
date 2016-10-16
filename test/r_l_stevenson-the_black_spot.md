@@ -3,6 +3,7 @@ date: Nov 1883
 lang: turkish, english
 title: The Black Spot
 author: Robert Louis Stevenson
+description: Treasure Island - Chapter 3
 attribution: >
     Chapter head  illustration scanned from \textsc{Recueil  des divers caractères,
     vignettes et ornemens de la fonderie et imprimerie de J.G. Gillé}.

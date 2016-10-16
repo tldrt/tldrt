@@ -100,6 +100,7 @@ fi
 if [ ! -f "$IMG" ]; then
     echo "No chapter head image found. Exiting."
     exit 1
+    
 fi
 
 ## Report path resolutions
@@ -168,6 +169,10 @@ TEXINPUTS="${HDC}//:${XDC}//:" \
 echo "Removing redundant directory $HDC/images."
 rm -fr "$HDC/images"
 
+echo "Copying STYLES to parent."
+mkdir -p "$ODC/css"
+cp -f "$XDC/tldrt.css" "$ODC/css"
+
 echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
 convert -antialias -density 240 "$HDC/${IFN}.pdf[0]" \
@@ -179,9 +184,14 @@ convert -antialias -density 240 "$HDC/${IFN}.pdf[0]" \
         "${HDC}/thumbnail.png"
 
 echo "Creating WRAPPER at $HDC."
-# pandoc -f markdown -t html \
-#        --template tldrt.html \
-#        --variable hash="$HASH"
-#        -o "$HASH/${FILENAME}.html" "${BASENAME}"
+pandoc -f markdown -t html \
+       --template "$XDC/tldrt.html" \
+       --variable root="tldrt.link" \
+       --variable hash="${IFH}" \
+       --variable analytics="UA-85639714-1" \
+       --variable site="TLDRT" \
+       --variable creator="TLDRT" \
+       --variable filename="${IFN}" \
+       -o "${HDC}/index.html" "${IFC}" \
 
 # End of file
