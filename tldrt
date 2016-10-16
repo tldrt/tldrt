@@ -179,7 +179,7 @@ convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
         -quality 80 -gravity north \
         -crop 2400x1284+0+320 +repage \
         -resize 50% -flatten \
-        "${XDC}/images/vignette.png" \
+        "${XDC}/vignette.png" \
         -compose ColorBurn -composite \
         "${HDC}/thumbnail.jpg"
 
