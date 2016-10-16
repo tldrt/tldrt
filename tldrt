@@ -181,7 +181,7 @@ convert -antialias -density 240 "$HDC/${IFN}.pdf[0]" \
         -resize 50% -flatten \
         "${XDC}/images/vignette.png" \
         -compose ColorBurn -composite \
-        "${HDC}/thumbnail.png"
+        "${HDC}/thumbnail.jpg"
 
 echo "Creating WRAPPER at $HDC."
 pandoc -f markdown -t html \
