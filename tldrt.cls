@@ -30,7 +30,8 @@
 \RequirePackage{fontspec}
 \defaultfontfeatures{%
     Ligatures = TeX,
-    Path      = {./fonts/}
+    Path % Causes font to be located using KPSEWHICH.
+    % Path      = {./fonts/}
 }
 \RequirePackage{fontawesome}
 \RequirePackage{bbding}
@@ -120,7 +121,7 @@
       \makebox[4.5cm][r]{%
         \makebox[0cm][l]{%
           \raisebox{-2.0cm}{%
-            \includegraphics[width=3cm,angle=20,origin=c]{stamp}}}}}}
+            \includegraphics[width=3cm,angle=20,origin=c]{\@hashcode}}}}}}
 }
 
 \newcommand{\attribution}[1]{%

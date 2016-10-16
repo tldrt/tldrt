@@ -112,38 +112,52 @@ if [ $VERBOSE  == 1 ]; then
 fi
 #### PATH RESOLUTIONS
 
-echo "Creating directory at $HDC"
+echo "Creating $HDC directory."
 mkdir -p $HDC
 
-echo "Creating stamp.png at $HDC/images"
+COLOR=$(echo "${IFH}" | tr 'a-z' 'A-Z')
+echo "Creating STAMP at $HDC/images."
 mkdir -p "$HDC/images"
 convert -antialias -size 512x320 "$XDC/stamp_bg.png" \
-        -stroke none -fill "#$IFH" \
+        -stroke none -fill "#${COLOR}" \
         -draw "rectangle 208,80 304,176" \
-        -font Shortcut -kerning 40 -fill '#503050' \
-        -pointsize 50 -gravity south \
-        -draw "text 0,0 '#$IFH'" \
-        "$HDC/images/stamp.png"
+        -font "$XDC/fonts/CatenaryStamp.ttf" \
+        -kerning 40 -fill '#503050' \
+        -pointsize 60 -gravity south \
+        -draw "text 0,0 '#${COLOR}'" \
+        "$HDC/images/${COLOR}.png"
 
-# pandoc -f markdown -t latex \
-#        --latex-engine=xelatex \
-#        --latex-engine-opt="--shell-escape" \
-#        --latex-engine-opt="--enable-write18" \
-#        --template tldrt.latex \
-#        --variable hash="$HASH"
-#        -o "$HASH/${FILENAME}.pdf" "${BASENAME}"
+echo "Copying media to $HDC."
+## TODO!
 
+echo "Creating DOCUMENT at $HDC."
+TEXINPUTS=".:${HDC}:${XDC}//:" \
+         pandoc -f markdown -t latex \
+         --latex-engine=xelatex \
+         --template "$XDC/tldrt.latex" \
+         --variable hash="${COLOR}" \
+         -o "${HDC}/${IFN}.pdf" "${IFC}"
+
+## Required when running shell commands from inside LaTeX.
+# --latex-engine-opt="--shell-escape" \
+# --latex-engine-opt="--enable-write18" \
+
+echo "Removing redundant directory $HDC/images."
+rm -fr "$HDC/images"
+
+echo "Creating THUMBNAIL at $HDC."
+convert -antialias -density 240 "$HDC/${IFN}.pdf[0]" \
+        -quality 90 -gravity north \
+        -crop 1200x642+0+160 +repage \
+        -resize 50% -flatten \
+        "${XDC}/images/vignette.png" \
+        -compose ColorBurn -composite \
+        "${HDC}/thumbnail.png"
+
+echo "Creating WRAPPER at $HDC."
 # pandoc -f markdown -t html \
 #        --template tldrt.html \
 #        --variable hash="$HASH"
 #        -o "$HASH/${FILENAME}.html" "${BASENAME}"
-
-# convert -antialias -density 240 "$HASH/${FILENAME}.pdf[0]" \
-#         -quality 90 -gravity north \
-#         -crop 1200x642+0+160 +repage \
-#         -resize 50% -flatten \
-#         images/vignette.png \
-#         -compose ColorBurn -composite \
-#         "$HASH/thumbnail.png"
 
 # End of file
