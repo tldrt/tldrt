@@ -7,8 +7,8 @@
 \RequirePackage{hyperref}
 \AtBeginDocument{%
   \edef\hashsign{\string#}
-  \StrLeft{\mdfivesum{\@author\@title}}{6}[\hashcode]
-  \def\@hashtag{\hashsign\hashcode}
+  % \StrLeft{\mdfivesum{\@author\@title}}{6}[\hashcode]
+  \def\@hashtag{\hashsign\@hashcode}
   \metadata%
 }
 
@@ -91,8 +91,11 @@
 %%%%% Commands %%%%%
 %%%%%%%%%%%%%%%%%%%%
 
-
 %% Metadata
+\newcommand{\hashcode}[1]{%
+  \def\@hashcode{#1}
+}
+
 \newcommand*{\metadata}{%
   \fullexpandarg%
   \hypersetup{
@@ -111,7 +114,7 @@
 
 %% Generate Stamp
 \newcommand{\stamp}{%
-  \immediate\write18{convert -antialias -size 512x320 stamp_bg.png -stroke none -fill '\@hashtag' -draw "rectangle 208,80 304,176" -fill \#503050 -font Shortcut -kerning 40 -pointsize 64 -gravity south -draw "text 0,0 '\@hashtag'" images/stamp.png}
+  % \immediate\write18{convert -antialias -size 512x320 stamp_bg.png -stroke none -fill '\@hashtag' -draw "rectangle 208,80 304,176" -fill \#503050 -font Shortcut -kerning 40 -pointsize 64 -gravity south -draw "text 0,0 '\@hashtag'" images/stamp.png}
   \AddToShipoutPictureFG*{% Insert stamp.
     \AtTextUpperLeft{%
       \makebox[4.5cm][r]{%

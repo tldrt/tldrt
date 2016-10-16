@@ -3,28 +3,34 @@
 # Usage info
 show_help() {
 cat << EOF
-Usage: ${0##*/} [-hv] [-f OUTFILE] [FILE]...
-Do stuff with FILE and write the result to standard output. With no FILE
-or when FILE is -, read standard input.
+Usage: ${0##*/} [-hvp] [-d OUTPUT-DIRECTORY] [FILE]...
+Generate TLDRT publish directory using FILE.
 
-    -h          display this help and exit
-    -v          verbose mode. Can be used multiple times for increased
+    -h          Display this help and exit.
+    -d          Specify output directory.
+    -p          Create output directory if it does not exist.
+    -v          Verbose mode. Can be used multiple times for increased
                 verbosity.
 EOF
 }
 
+MAGICK_OCL_DEVICE=OFF
+
 VERBOSE=0
+PARENT=0
 LOGO="res/stamp_6x13.png"
 
 OPTIND=1 # Reset is necessary if getopts was used previously in the script.  It is a good idea to make this local in a function.
-while getopts "hvi:" opt; do
+while getopts "hvpd:" opt; do
     case "$opt" in
         h)  show_help
             exit 0
             ;;
         v)  VERBOSE=$((VERBOSE+1))
             ;;
-        i)  IFP=$OPTARG
+        p)  PARENT=1
+            ;;
+        d)  ODP=$OPTARG
             ;;
         '?')
             show_help >&2
@@ -34,8 +40,6 @@ while getopts "hvi:" opt; do
 done
 shift "$((OPTIND-1))" # Shift off the options and optional --.
 
-MAGICK_OCL_DEVICE=OFF
-
 #### PATH RESOLUTIONS
 ## Canonical Path to Working Directory
 WDC=$(pwd)
@@ -43,10 +47,21 @@ WDC=$(pwd)
 XDP=$(dirname -- "$0")
 ## Canonical Path to Executable Directory
 XDC=`cd "$XDP"; pwd`
+## Path to Input File
+if [ -z ${1+x} ]; then
+    echo "No input file provided."
+    exit 1
+fi
+if [ ! -f "$1" ]
+then
+    echo "$1 does not exist or is not a regular file."
+    exit 1
+fi
+IFP="$1"
 ## Path to Input Directory
 IDP=$(dirname -- "$IFP")
 ## Canonical Path to Input Directory
-IDC=`cd "$IDP"; pwd` # (Caution: if !IDP then IDC=WDC)
+IDC=`cd "$IDP"; pwd`
 ## Input File Basename
 IFB=$(basename -- "$IFP")
 ## Canonical Path to Input File
@@ -59,8 +74,27 @@ IFE="${IFB##*.}"
 IFH=$(echo -n "$IFN" \
           | md5sum \
           | awk '{print substr($1,0,6)}')
+## Path to Ouput Directory
+if [ -z ${ODP+x} ]; then
+    ODP="$IDP"
+fi
+## Ensure & Check Path to Ouput Directory
+if [ $PARENT == 1 ]; then
+    mkdir -p $ODP
+fi
+if [ ! -d "$ODP" ]
+then
+    echo "$ODP does not exist or is not a regular file."
+    echo "Call with '-p' switch if you want to create directory."
+    exit 1
+fi
+## Canonical Path to Ouput Directory
+ODC=`cd "$ODP"; pwd`
+## Canonical Path to Hash Directory
+HDC="${ODC}/${IFH}"
+
 ## Report Path Resolutions
-if [[ $VERBOSE  == 1 ]]; then
+if [ $VERBOSE  == 1 ]; then
     echo "Canonical Path to Working Directory    : $WDC"
     echo "Path to Executable Directory           : $XDP"
     echo "Canonical Path to Executable Directory : $XDC"
@@ -72,19 +106,24 @@ if [[ $VERBOSE  == 1 ]]; then
     echo "Input File Name                        : $IFN"
     echo "Input File Extension                   : $IFE"
     echo "Input File Hash String                 : $IFH"
+    echo "Path to Output Directory               : $IDP"
+    echo "Canonical Path to Output Directory     : $IDC"
+    echo "Canonical Path to Hash Directory       : $HDC"
 fi
 #### PATH RESOLUTIONS
 
-echo "Creating directory at $IFH"
-# mkdir -p $IFH
+echo "Creating directory at $HDC"
+mkdir -p $HDC
 
-# convert -antialias -size 512x320 stamp_bg.png \
-#         -stroke none -fill "#$HASH" \
-#         -draw "rectangle 208,80 304,176" \
-#         -font Shortcut -fill '#503050' \
-#         -pointsize 50 -gravity south \
-#         -draw "text 0,0 '#$HASH'" \
-#         "$HASH/images/stamp.png"
+echo "Creating stamp.png at $HDC/images"
+mkdir -p "$HDC/images"
+convert -antialias -size 512x320 "$XDC/stamp_bg.png" \
+        -stroke none -fill "#$IFH" \
+        -draw "rectangle 208,80 304,176" \
+        -font Shortcut -kerning 40 -fill '#503050' \
+        -pointsize 50 -gravity south \
+        -draw "text 0,0 '#$IFH'" \
+        "$HDC/images/stamp.png"
 
 # pandoc -f markdown -t latex \
 #        --latex-engine=xelatex \

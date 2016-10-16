@@ -5,6 +5,9 @@ $endfor$
 $if(date)$
 \date{$date$}
 $endif$
+$if(hash)$
+\hashcode{$hash$}
+$endif$
 $if(title)$
 \title{$title$}
 $endif$
