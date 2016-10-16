@@ -175,9 +175,9 @@ cp -f "$XDC/tldrt.css" "$ODC/css"
 
 echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
-convert -antialias -density 240 "$HDC/${IFN}.pdf[0]" \
-        -quality 90 -gravity north \
-        -crop 1200x642+0+160 +repage \
+convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
+        -quality 80 -gravity north \
+        -crop 2400x1284+0+320 +repage \
         -resize 50% -flatten \
         "${XDC}/images/vignette.png" \
         -compose ColorBurn -composite \
