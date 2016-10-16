@@ -124,6 +124,8 @@ convert -antialias -size 512x320 "$XDC/stamp_bg.png" \
         -kerning 40 -fill '#503050' \
         -pointsize 60 -gravity south \
         -draw "text 0,0 '#${COLOR}'" \
+        \( +clone -channel a -fx 0 \) \
+        +swap "$XDC/stamp_mask.png" -composite \
         "$HDC/images/${COLOR}.png"
 
 echo "Copying media to $HDC."

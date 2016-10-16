@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="stamp.svg"
-   inkscape:export-filename="/home/kenanb/stamp.png"
+   inkscape:export-filename="/home/kenanb/dev/tldrt/stamp_bg.png"
    inkscape:export-xdpi="180"
    inkscape:export-ydpi="180">
   <defs
@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="50.86"
-     inkscape:cy="17.248902"
+     inkscape:cx="131.6914"
+     inkscape:cy="42.227981"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -71,7 +71,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -80,20 +80,15 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-892.36219)">
-    <g
-       id="g4444"
-       transform="translate(-350.88162,66.46905)"
-       style="opacity:1">
-      <path
-         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-         d="M 79.955078 14.326172 C 76.935298 18.714272 72.39146 21.2779 66.25 22.125 L 66.25 32 L 75.75 32 L 75.75 84.875 C 75.75 92.5 76.25 95.5 77.75 98.5 C 80.5 103.5 85.375 105.875 92.75 105.875 L 142.5 105.875 L 142.5 96 L 100.5 96 C 97.125 96 96 94 96 87.5 L 96 32 L 105.5 32 L 105.5 22.125 C 99.35854 21.2779 94.812749 18.714272 91.792969 14.326172 L 79.955078 14.326172 z "
-         transform="translate(350.88162,825.89314)"
-         id="path4889-4" />
-      <path
-         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-         d="M 113.5 22.125 L 113.5 32 L 155.5 32 C 158.875 32 160 34 160 40.5 L 160 96 L 150.5 96 L 150.5 105.875 C 156.64146 106.7221 161.18725 109.28573 164.20703 113.67383 L 176.04492 113.67383 C 179.0647 109.28573 183.60855 106.7221 189.75 105.875 L 189.75 96 L 180.25 96 L 180.25 43.125 C 180.25 35.5 179.75 32.5 178.25 29.5 C 175.5 24.5 170.625 22.125 163.25 22.125 L 113.5 22.125 z "
-         transform="translate(350.88162,825.89314)"
-         id="path5086-6" />
-    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path4889-4"
+       d="m 79.955078,906.68836 c -3.01978,4.3881 -7.563618,6.95173 -13.705078,7.79883 l 0,9.875 9.5,0 0,52.875 c 0,7.625 0.5,10.625 2,13.625 2.75,5 7.625,7.375 15,7.375 l 49.75,0 0,-9.875 -42,0 c -3.375,0 -4.5,-2 -4.5,-8.5 l 0,-55.5 9.5,0 0,-9.875 c -6.14146,-0.8471 -10.687251,-3.41073 -13.707031,-7.79883 l -11.837891,0 z"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#503050;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5086-6"
+       d="m 113.5,914.48719 0,9.875 42,0 c 3.375,0 4.5,2 4.5,8.5 l 0,55.5 -9.5,0 0,9.875 c 6.14146,0.8471 10.68725,3.41071 13.70703,7.79881 l 11.83789,0 c 3.01978,-4.3881 7.56363,-6.95171 13.70508,-7.79881 l 0,-9.875 -9.5,0 0,-52.875 c 0,-7.625 -0.5,-10.625 -2,-13.625 -2.75,-5 -7.625,-7.375 -15,-7.375 l -49.75,0 z"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:125px;line-height:125%;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:none;fill-opacity:1;stroke:#503050;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
