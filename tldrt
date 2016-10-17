@@ -177,7 +177,7 @@ echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
 convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
         -quality 80 -gravity north \
-        -crop 2400x1284+0+320 +repage \
+        -crop 2400x1284+0+340 +repage \
         -resize 50% -flatten \
         "${XDC}/vignette.png" \
         -compose ColorBurn -composite \
@@ -186,6 +186,7 @@ convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
 echo "Creating WRAPPER at $HDC."
 pandoc -f markdown -t html \
        --template "$XDC/tldrt.html" \
+       --variable prefix="TLDRT" \
        --variable root="tldrt.link" \
        --variable hash="${IFH}" \
        --variable analytics="UA-85639714-1" \
