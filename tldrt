@@ -182,7 +182,7 @@ echo "Removing redundant directory $HDC/images."
 rm -fr "$HDC/images"
 
 echo "Copying viewer deps to parent."
-cp -fr "$XDC/parent/*" "$ODC/"
+cp -fr "$XDC/parent/"* "$ODC/"
 
 echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
