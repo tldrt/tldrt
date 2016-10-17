@@ -128,10 +128,14 @@ echo "Creating $HDC directory."
 mkdir -p $HDC
 
 echo "Creating STAMP at $HDC/images."
-read  XCO YCO ROT <<< $(echo "${IFH}" | grep -o ..)
-XCO="$(( ( ( 0x${XCO} / 17 ) - 7 ) + 45 ))mm"
-YCO="$(( ( ( 0x${YCO} / 17 ) - 7 ) - 20 ))mm"
-ROT="$(( ( 0x${ROT} / 5 ) - 25 ))"
+read  CHR CHG CHB <<< $(echo "${IFH}" | grep -o ..)
+CHR="$(( 0x${CHR} ))"
+CHG="$(( 0x${CHG} ))"
+CHB="$(( 0x${CHB} ))"
+SUM="$(( ${CHR} + ${CHG} + ${CHB} ))"
+XCO="$(( ( ( ${CHR} / 17 ) - 7 ) + 45 ))mm"
+YCO="$(( ( ( ${CHG} / 17 ) - 7 ) - 20 ))mm"
+ROT="$(( ( ${CHB} / 5 ) - 25 ))"
 if [ $VERBOSE  == 1 ]; then
     echo "X Coordinate for stamp                 : $XCO"
     echo "Y Coordinate for stamp                 : $YCO"
@@ -183,14 +187,14 @@ rm -fr "$HDC/images"
 
 echo "Copying viewer deps to parent."
 cp -fr "$XDC/parent/"* "$ODC/"
-
+echo "${CHR} ${CHG} ${CHB} ${SUM}"
 echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
 convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
         -quality 80 -gravity north \
         -crop 2400x1284+0+340 +repage \
         -resize 50% -flatten \
-        "${XDC}/vignette.png" \
+        \( "${XDC}/vignette.png" -modulate "100,200,${SUM}" \) \
         -compose ColorBurn -composite \
         -strip -interlace Plane \
         -sampling-factor 4:2:0 \
