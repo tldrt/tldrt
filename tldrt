@@ -204,8 +204,8 @@ pandoc -f markdown -t html \
        --variable root="tldrt.link" \
        --variable hash="${IFH}" \
        --variable analytics="UA-85639714-1" \
-       --variable site="TLDRT" \
-       --variable creator="TLDRT" \
+       --variable site="tldrt" \
+       --variable creator="tldrt" \
        --variable filename="${IFN}" \
        -o "${HDC}/index.html" "${IFC}" \
 
