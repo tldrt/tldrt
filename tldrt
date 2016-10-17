@@ -132,7 +132,7 @@ read  CHR CHG CHB <<< $(echo "${IFH}" | grep -o ..)
 CHR="$(( 0x${CHR} ))"
 CHG="$(( 0x${CHG} ))"
 CHB="$(( 0x${CHB} ))"
-SUM="$(( ${CHR} + ${CHG} + ${CHB} ))"
+HUE="$(( ${CHR} + ${CHG} + ${CHB} ))"
 XCO="$(( ( ( ${CHR} / 17 ) - 7 ) + 45 ))mm"
 YCO="$(( ( ( ${CHG} / 17 ) - 7 ) - 20 ))mm"
 ROT="$(( ( ${CHB} / 5 ) - 25 ))"
@@ -140,6 +140,7 @@ if [ $VERBOSE  == 1 ]; then
     echo "X Coordinate for stamp                 : $XCO"
     echo "Y Coordinate for stamp                 : $YCO"
     echo "Rotation for stamp                     : $ROT"
+    echo "Modulation for thumbnail               : $HUE"
 fi
 mkdir -p "$HDC/images"
 MAGICK_OCL_DEVICE=OFF \
@@ -187,15 +188,19 @@ rm -fr "$HDC/images"
 
 echo "Copying viewer deps to parent."
 cp -fr "$XDC/parent/"* "$ODC/"
-echo "${CHR} ${CHG} ${CHB} ${SUM}"
+
 echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
 convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
         -quality 80 -gravity north \
         -crop 2400x1284+0+340 +repage \
         -resize 50% -flatten \
-        \( "${XDC}/vignette.png" -modulate "100,200,${SUM}" \) \
+        "${XDC}/vignette.png" \
         -compose ColorBurn -composite \
+        \( "${XDC}/vignette.png" \
+        +level-colors red  \
+        -modulate "180,150,${HUE}" \) \
+        -compose Multiply -composite \
         -strip -interlace Plane \
         -sampling-factor 4:2:0 \
         -define jpeg:dct-method=float \
