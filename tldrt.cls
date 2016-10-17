@@ -113,15 +113,28 @@
   }
 }
 
+%% Stamp Transformations
+\newcommand{\xcoordinate}[1]{%
+  \def\@xcoordinate{#1}
+}
+
+\newcommand{\ycoordinate}[1]{%
+  \def\@ycoordinate{#1}
+}
+
+\newcommand{\rotation}[1]{%
+  \def\@rotation{#1}
+}
+
 %% Generate Stamp
 \newcommand{\stamp}{%
   % \immediate\write18{convert -antialias -size 512x320 stamp_bg.png -stroke none -fill '\@hashtag' -draw "rectangle 208,80 304,176" -fill \#503050 -font Shortcut -kerning 40 -pointsize 64 -gravity south -draw "text 0,0 '\@hashtag'" images/stamp.png}
   \AddToShipoutPictureFG*{% Insert stamp.
     \AtTextUpperLeft{%
-      \makebox[4.5cm][r]{%
+      \makebox[\@xcoordinate][r]{%
         \makebox[0cm][l]{%
-          \raisebox{-2.0cm}{%
-            \includegraphics[width=3cm,angle=20,origin=c]{\@hashcode}}}}}}
+          \raisebox{\@ycoordinate}{%
+            \includegraphics[width=3cm,angle=\@rotation,origin=c]{\@hashcode}}}}}}
 }
 
 \newcommand{\attribution}[1]{%

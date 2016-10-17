@@ -5,6 +5,9 @@ $endfor$
 $if(date)$
 \date{$date$}
 $endif$
+\xcoordinate{$xcoordinate$}
+\ycoordinate{$ycoordinate$}
+\rotation{$rotation$}
 $if(hash)$
 \hashcode{$hash$}
 $endif$
