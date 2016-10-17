@@ -193,6 +193,9 @@ convert -antialias -density 480 "$HDC/${IFN}.pdf[0]" \
         -resize 50% -flatten \
         "${XDC}/vignette.png" \
         -compose ColorBurn -composite \
+        -strip -interlace Plane \
+        -sampling-factor 4:2:0 \
+        -define jpeg:dct-method=float \
         "${HDC}/thumbnail.jpg"
 
 echo "Creating WRAPPER at $HDC."
