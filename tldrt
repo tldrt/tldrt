@@ -181,9 +181,8 @@ TEXINPUTS="${HDC}//:${XDC}//:" \
 echo "Removing redundant directory $HDC/images."
 rm -fr "$HDC/images"
 
-echo "Copying STYLES to parent."
-mkdir -p "$ODC/css"
-cp -f "$XDC/tldrt.css" "$ODC/css"
+echo "Copying viewer deps to parent."
+cp -fr "$XDC/parent/*" "$ODC/"
 
 echo "Creating THUMBNAIL at $HDC."
 MAGICK_OCL_DEVICE=OFF \
