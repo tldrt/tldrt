@@ -16,13 +16,15 @@ $endif$
   <!-- OpenGraph -->
   <meta name="og:type" content="article">
   <meta name="og:title" content="$title$">
-  <meta name="og:url" content="http://$root$/$hash$">
+  <meta name="og:url" content="http://$root$/$hash$/">
   <meta name="og:image" content="http://$root$/$hash$/thumbnail.jpg">
   <meta name="og:description" content="$if(description)$$description$$endif$">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@$site$">
   <meta name="twitter:creator" content="@$creator$">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://$root$/$hash$/" />
   <!-- Icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/ico/favicon-32x32.png" sizes="32x32">
