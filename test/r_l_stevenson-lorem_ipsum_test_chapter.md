@@ -3,6 +3,10 @@ date: Nov 1883
 lang: turkish, english
 title: The Black Spot
 author: Robert Louis Stevenson
+website: loremipsumfunand.games
+twitter: testfolkloremipsum
+<!-- github: testfolklorem -->
+<!-- email: soveryloremipsum@gmail.com -->
 description: Treasure Island - Chapter 3
 attribution: >
     Chapter head  illustration scanned from \textsc{Recueil  des divers caractères,

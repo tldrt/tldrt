@@ -4,7 +4,7 @@
 \LoadClass[a4paper]{report}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage{hyperref}
+\RequirePackage[colorlinks]{hyperref}
 \AtBeginDocument{%
   \edef\hashsign{\string#}
   % \StrLeft{\mdfivesum{\@author\@title}}{6}[\hashcode]
@@ -97,6 +97,9 @@
   \def\@hashcode{#1}
 }
 
+% \definecolor{stampteal}{RGB}{13,101,207}
+\definecolor{stampteal}{RGB}{167,184,205}
+
 \newcommand*{\metadata}{%
   \fullexpandarg%
   \hypersetup{
@@ -109,7 +112,8 @@
     pdfcreator     ={TLDRT},
     bookmarksopen  =false,
     bookmarksdepth =2,
-    colorlinks     =true
+    linkcolor={red!50!black},
+    urlcolor={stampteal}
   }
 }
 
@@ -147,12 +151,41 @@
   \def\@epigq{#3}
 }
 
+\newcommand{\website}[1]{%
+  \def\@website{#1}
+}
+
+\newcommand{\twitter}[1]{%
+  \def\@twitter{#1}
+}
+
+\newcommand{\github}[1]{%
+  \def\@github{#1}
+}
+
+\newcommand{\email}[1]{%
+  \def\@email{#1}
+}
+
 %% Attribution
 \newcommand{\attribute}{%
   %% Content attribution line.
   {\parindent0pt\vspace*{-40pt}%
     \linespread{1.1}\large%
-    \scshape{\@author\ ---\ \@date\ \hfill \normalsize\faExternalLink\ \faTwitterSquare\ \faGithubSquare\ \faEnvelope}%
+    \scshape{\@author\ ---\ \@date\ \hfill \small%
+      \ifdefined\@website
+      \href{http://\@website}{\faExternalLink}\ %
+      \fi
+      \ifdefined\@twitter
+      \href{http://www.twitter.com/\@twitter}{\faTwitterSquare}\ %
+      \fi
+      \ifdefined\@github
+      \href{http://www.github.com/\@github}{\faGithubSquare}\ %
+      \fi
+      \ifdefined\@email
+      \href{mailto:\@email}{\faEnvelope}
+      \fi%
+    }
     \par\nobreak}
   \@afterheading%
   %% Chapter head image attribution as footnote without marker.
