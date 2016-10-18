@@ -8,6 +8,9 @@ $endif$
 $if(website)$
 \website{$website$}
 $endif$
+$if(longtitle)$
+\longtitle{}
+$endif$
 $if(twitter)$
 \twitter{$twitter$}
 $endif$

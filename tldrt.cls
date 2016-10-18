@@ -68,6 +68,12 @@
 \RequirePackage{epigraph}
 \RequirePackage{fancyhdr}
 \AtBeginDocument{%
+  \ifdefined\@longtitle
+  \setlength{\headsep}{-5pt}
+  \def\@raiseimage{-2.5cm}
+  \else
+  \def\@raiseimage{-1.5cm}
+  \fi
   \Large%
   \header%
   \stamp%
@@ -145,6 +151,10 @@
   \def\@attribution{#1}
 }
 
+\newcommand{\longtitle}{%
+  \def\@longtitle%
+}
+
 \newcommand{\epigram}[3][]{%
   \def\@epigs{#1}
   \def\@epiga{#2}
@@ -206,7 +216,7 @@
     \AtTextUpperLeft{%
       \makebox[0.5cm][r]{%
         \makebox[0cm][l]{%
-          \raisebox{-1.5cm}{%
+          \raisebox{\@raiseimage}{%
             \includegraphics[width=6cm,origin=c]{ornament}}}}}}
   \chapter*{\@title}
   \attribute%
