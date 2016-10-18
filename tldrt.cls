@@ -4,6 +4,7 @@
 \LoadClass[a4paper]{report}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{verse}
 \RequirePackage[colorlinks]{hyperref}
 \AtBeginDocument{%
   \edef\hashsign{\string#}

@@ -169,7 +169,7 @@ if [ $VERBOSE  == 1 ]; then
     echo -n "LaTeX search paths                     : "
     TEXINPUTS="${HDC}:${XDC}//:" kpsewhich -expand-var '$TEXINPUTS'
 fi
-TEXINPUTS="${HDC}//:${XDC}//:" \
+TEXINPUTS="${IDC}//:${HDC}//:${XDC}//:" \
          pandoc -f markdown -t latex \
          --latex-engine=xelatex \
          --template "$XDC/tldrt.latex" \
