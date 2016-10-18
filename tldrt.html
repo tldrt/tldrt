@@ -48,6 +48,7 @@
     <meta name="twitter:creator" content="@$creator$">
     <!-- Canonical URL -->
     <link rel="canonical" href="http://$root$/$hash$/" />
+    <link rel="me" href="https://twitter.com/$site$">
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/ico/favicon-32x32.png" sizes="32x32">
@@ -220,6 +221,10 @@
                 <span id="numPages" class="toolbarLabel"></span>
               </div>
               <div id="toolbarViewerRight">
+                <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+                <a href="https://twitter.com/intent/tweet?url=http://$root$/$hash$/&text=Great%20read%21&via=$site$&hashtags=$color$,goodreads,literature" id="viewRetweet" class="toolbarButton retweet hiddenSmallView" title="Share on Twitter" tabindex="29">
+                  <span>Tweet</span>
+                </a>
                 <button id="presentationMode" class="toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
                   <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
                 </button>

@@ -212,6 +212,7 @@ pandoc -f markdown -t html \
        --variable prefix="TLDRT" \
        --variable root="tldrt.link" \
        --variable hash="${IFH}" \
+       --variable color="${CLR}" \
        --variable analytics="UA-85639714-1" \
        --variable site="tldrt" \
        --variable creator="tldrt" \

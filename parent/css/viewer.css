@@ -1123,6 +1123,30 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   content: url(../images/toolbarButton-bookmark.png);
 }
 
+
+.toolbarButton.retweet,
+.secondaryToolbarButton.retweet {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  padding-top: 4px;
+  text-decoration: none;
+}
+.secondaryToolbarButton.retweet {
+  padding-top: 5px;
+}
+
+.retweet[href='#'] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.toolbarButton.retweet::before,
+.secondaryToolbarButton.retweet::before {
+  content: url(../images/toolbarButton-retweet.png);
+}
+
 #viewThumbnail.toolbarButton::before {
   content: url(../images/toolbarButton-viewThumbnail.png);
 }
@@ -1164,6 +1188,13 @@ html[dir="ltr"] .secondaryToolbarButton.bookmark {
   padding-left: 27px;
 }
 html[dir="rtl"] .secondaryToolbarButton.bookmark {
+  padding-right: 27px;
+}
+
+html[dir="ltr"] .secondaryToolbarButton.retweet {
+  padding-left: 27px;
+}
+html[dir="rtl"] .secondaryToolbarButton.retweet {
   padding-right: 27px;
 }
 
@@ -1878,6 +1909,11 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   .toolbarButton.bookmark::before,
   .secondaryToolbarButton.bookmark::before {
     content: url(../images/toolbarButton-bookmark@2x.png);
+  }
+
+  .toolbarButton.retweet::before,
+  .secondaryToolbarButton.retweet::before {
+    content: url(../images/toolbarButton-retweet@2x.png);
   }
 
   #viewThumbnail.toolbarButton::before {
