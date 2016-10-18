@@ -76,7 +76,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\includegraphics[width=1cm]{logo}}
-\lhead{\textsc{Possibly Immortal}}
+\lhead{\textsc{\@title}}
 \cfoot{\thepage}
 
 %% Formatting
