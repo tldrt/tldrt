@@ -25,6 +25,7 @@
 %% Utility
 \RequirePackage{ifthen}
 \RequirePackage{xstring}
+\RequirePackage{calc}
 
 %% Font Related
 \RequirePackage{fontspec}
@@ -67,13 +68,10 @@
 %% Layout
 \RequirePackage{epigraph}
 \RequirePackage{fancyhdr}
+\RequirePackage{etoolbox}
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+
 \AtBeginDocument{%
-  \ifdefined\@longtitle
-  \setlength{\headsep}{-5pt}
-  \def\@raiseimage{-2.5cm}
-  \else
-  \def\@raiseimage{-1.5cm}
-  \fi
   \Large%
   \header%
   \stamp%
@@ -212,12 +210,18 @@
 \newcommand*{\header}{
   % \shorthandoff{=} % In case babel turkish bugs.
   % \AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{paper}} % Fallback paper pattern.
+  \newlength{\displace}
+  \setlength{\displace}{0cm}
+  \ifdefined\@longtitle
+  \setlength{\displace}{-1.0cm}%
+  \fi
   \AddToShipoutPictureFG*{% Insert image.
     \AtTextUpperLeft{%
       \makebox[0.5cm][r]{%
         \makebox[0cm][l]{%
-          \raisebox{\@raiseimage}{%
+          \raisebox{-1.5cm}{%
             \includegraphics[width=6cm,origin=c]{ornament}}}}}}
+  \vspace*{\displace}
   \chapter*{\@title}
   \attribute%
   \epigraphhead[35]{\epigraph{``\@epigq''}{\textsc{\@epiga\\\@epigs}}}%
